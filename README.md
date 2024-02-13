@@ -55,7 +55,8 @@ You can run these scripts by using the npm run command followed by the script na
 The folder structure of this template is as follows:
 
 - root: Project configuration
-- ./tests: Contains all tests
+- ./\_\_tests\_\_: Contains all tests
+  - \_\_mocks\_\_: Contains mock files for testing. Imported with `@mocks`
 - ./src: Contains the entirety of the app
   - api: Contains API-related files. Imported with `@api`
   - app: Contains the main application files. Imported with `@app`
