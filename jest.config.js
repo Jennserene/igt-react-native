@@ -7,7 +7,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
-  testMatch: ['<rootDir>/tests/**/*.test.{ts,tsx,js,jsx}'],
+  testMatch: ['<rootDir>/__tests__/**/*.test.{ts,tsx,js,jsx}'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
@@ -21,7 +21,7 @@ module.exports = {
     '@utils/(.*)': '<rootDir>/src/utils/$1',
     // Don't forget to add the path to the tsconfig.json above this.
     // Mocks:
-    '@mocks/(.*)': '<rootDir>/tests/__mocks__/$1',
-    '^expo-font$': '<rootDir>/tests/__mocks__/expo-font.js',
+    '@mocks/(.*)': '<rootDir>/__tests__/__mocks__/$1',
+    '^expo-font$': '<rootDir>/__tests__/__mocks__/expo-font.js',
   },
 }

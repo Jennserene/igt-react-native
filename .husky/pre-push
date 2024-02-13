@@ -3,11 +3,11 @@
 
 echo '-----pre-push hook started-----'
 
-# Run tests
+# Run __tests__
 if ! npm run test; then
     echo 'Tests failed'
     exit 1
 fi
 
-echo '-----tests completed-----'
+echo '-----__tests__ completed-----'
 exit 0

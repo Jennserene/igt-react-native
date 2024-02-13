@@ -45,7 +45,8 @@ You can run these scripts by using the npm run command followed by the script na
 - TypeScript: This template is configured to use TypeScript for type checking and improved developer experience.
 - Linting: ESLint is set up with a basic configuration to enforce code quality and consistency.
 - Testing: Jest is configured for unit testing your code. You can add your tests in the `__tests__` directory.
-- Precommit Hook: This template includes a precommit hook that runs linting and testing before committing and pushing your code, respectively.
+- Pre-commit Hook: This template includes a precommit hook that runs linting and testing before committing and pushing your code, respectively.
+- Pre-push Hook: This template includes a prepush hook that runs tests before pushing your code.
 - Expo Router: This template includes the Expo router for easy navigation between screens in your app.
 
 ## Folder Structure
