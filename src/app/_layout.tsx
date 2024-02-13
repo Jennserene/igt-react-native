@@ -35,7 +35,6 @@ export default function HomeLayout() {
   if (fontError) {
     return <Error errorText={fontError.message} />
   }
-  console.log('isLoading: ', isLoading)
 
   return (
     <GlobalProviders>

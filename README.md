@@ -1,6 +1,6 @@
 # Expo Template
 
-This repository serves as a starting point for creating Expo projects with TypeScript, linting, testing, and Expo router already set up.
+This repository serves as a starting point for creating Expo projects with typeScript, linting, testing, CI, git hooks, and Expo router already set up.
 
 ## Getting Started
 
@@ -47,6 +47,7 @@ You can run these scripts by using the npm run command followed by the script na
 - Testing: Jest is configured for unit testing your code. You can add your tests in the `__tests__` directory.
 - Pre-commit Hook: This template includes a precommit hook that runs linting and testing before committing and pushing your code, respectively.
 - Pre-push Hook: This template includes a prepush hook that runs tests before pushing your code.
+- CI: This template includes a GitHub Actions workflow that runs linting and tests on every pull request.
 - Expo Router: This template includes the Expo router for easy navigation between screens in your app.
 
 ## Folder Structure
@@ -56,11 +57,11 @@ The folder structure of this template is as follows:
 - root: Project configuration
 - ./tests: Contains all tests
 - ./src: Contains the entirety of the app
-  - api: Contains API-related files
-  - app: Contains the main application files
-  - assets: Contains static assets such as images and fonts
-  - components: Contains reusable UI components
-  - hooks: Contains custom React hooks
-  - types: Contains TypeScript type definitions
-  - utils: Contains utility functions and helper files
+  - api: Contains API-related files. Imported with `@api`
+  - app: Contains the main application files. Imported with `@app`
+  - assets: Contains static assets such as images and fonts. Imported with `@assets`
+  - components: Contains reusable UI components. Imported with `@components`
+  - hooks: Contains custom React hooks. Imported with `@hooks`
+  - typeDefs: Contains TypeScript type definitions. Imported with `@typeDefs`
+  - utils: Contains utility functions and helper files. Imported with `@utils`
 

@@ -5,6 +5,7 @@
     "module": "ESNext",
     "baseUrl": "./",
     "paths": {
+      "@api": ["./src/api/index"],
       "@api/*": ["./src/api/*"],
       "@app/*": ["./src/app/*"],
       "@assets/*": ["./src/assets/*"],
