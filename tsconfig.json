@@ -1,0 +1,28 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "module": "ESNext",
+    "baseUrl": "./",
+    "paths": {
+      "@api/*": ["./src/api/*"],
+      "@app/*": ["./src/app/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components": ["./src/components/index"],
+      "@components/*": ["./src/components/*"],
+      "@hooks": ["./src/hooks/index"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@typeDefs": ["src/typeDefs/index"],
+      "@typeDefs/*": ["src/typeDefs/*"],
+      "@utils": ["./src/utils/index"],
+      "@utils/*": ["./src/utils/*"],
+      "@mocks/*": ["./tests/__mocks__/*"],
+    }
+  },
+  "include": [
+    "**/*.ts", 
+    "**/*.tsx", 
+    ".expo/types/**/*.ts", 
+    "expo-env.d.ts"
+  ]
+}
