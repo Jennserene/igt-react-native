@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '-----pre-commit hook started-----'
+
+# Get typescript and javascript files from staged files
+files="$(git diff --name-only --cached --diff-filter=AM | grep '.*\.[tj]sx\?$' | paste -sd ' ' -)"
+
+if [ ${#files} -gt 0 ]; then
+    # Format staged typescript and javascript files if not formatted already
+    if ! npx eslint --fix $files; then
+        echo 'ESLint failed'
+        exit 1
+    fi
+
+    echo '-----linting completed-----\n'
+    echo 'The following files have been formatted and will be re-staged:'
+    echo "$files" | tr ' ' '\n' | sed 's/^/- /'
+
+    # Re-stage formatted files for committing.
+    git add $files
+    echo '\n-----staged files-----'
+else
+    echo '-----linting skipped: no changes detected-----'
+fi
+exit 0
