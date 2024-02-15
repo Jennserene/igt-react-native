@@ -1,6 +1,6 @@
 # Expo Template
 
-This repository serves as a starting point for creating Expo projects with typeScript, linting, testing, CI, git hooks, and Expo router already set up.
+This repository serves as a starting point for creating Expo projects with typeScript, linting, testing, CI, git hooks, and a few commonly used dependencies already set up.
 
 ## Getting Started
 
@@ -27,6 +27,7 @@ To get started with this template, follow these steps:
 - `npm run test:watch`: Runs Jest in watch mode, allowing you to re-run tests automatically when files change.
 
 You can run these scripts by using the `npm run` command followed by the script name. For example, to start the Expo development server, you can run `npm run start`.
+
 - prepare: Installs Husky, a Git hook manager, to enable precommit hooks.
 - start: Starts the Expo development server.
 - android: Starts the Expo development server and opens the app on an Android emulator or device.
@@ -48,21 +49,31 @@ You can run these scripts by using the npm run command followed by the script na
 - Pre-commit Hook: This template includes a precommit hook that runs linting and testing before committing and pushing your code, respectively.
 - Pre-push Hook: This template includes a prepush hook that runs tests before pushing your code.
 - CI: This template includes a GitHub Actions workflow that runs linting and tests on every pull request.
-- Expo Router: This template includes the Expo router for easy navigation between screens in your app.
+- Commonly Used Dependencies: This template includes some commonly used dependencies such as Expo Router.
+  - [Expo Router](https://docs.expo.dev/router/introduction/): This template includes the Expo router for easy navigation between screens.
 
 ## Folder Structure
 
 The folder structure of this template is as follows:
 
 - root: Project configuration
-- ./\_\_tests\_\_: Contains all tests
-  - \_\_mocks\_\_: Contains mock files for testing. Imported with `@mocks`
-- ./src: Contains the entirety of the app
-  - api: Contains API-related files. Imported with `@api`
-  - app: Contains the main application files. Imported with `@app`
-  - assets: Contains static assets such as images and fonts. Imported with `@assets`
-  - components: Contains reusable UI components. Imported with `@components`
-  - hooks: Contains custom React hooks. Imported with `@hooks`
-  - typeDefs: Contains TypeScript type definitions. Imported with `@typeDefs`
-  - utils: Contains utility functions and helper files. Imported with `@utils`
+- ./\_\_tests\_\_/: Contains all tests
+  - /\_\_mocks\_\_/: Contains mock files for testing. Imported with `@mocks`
+- ./src/: Contains the entirety of the app
+  - /api/: Contains API-related files. Imported with `@api`
+  - /app/: Contains the main application files. Imported with `@app`
+  - /assets/: Contains static assets such as images and fonts. Imported with `@assets`
+  - /components/: Contains reusable UI components. Imported with `@components`
+  - /hooks/: Contains custom React hooks. Imported with `@hooks`
+  - /typeDefs/: Contains TypeScript type definitions. Imported with `@typeDefs`
+  - /utils/: Contains utility functions and helper files. Imported with `@utils`
 
+## Customization
+
+Adding additional dependencies should be done using `expo`. For example, to add `expo-battery`, you can run:
+
+`npx expo install expo-battery`
+
+If you need to add a development dependency, you can add the `-- --save-dev` flag:
+
+`npx expo install axios-mock-adapter -- --save-dev`

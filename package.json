@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "@expo/webpack-config": "~19.0.1",
+    "ajv-errors": "^3.0.0",
+    "ajv-formats": "^2.1.1",
     "expo": "~50.0.6",
     "expo-app-loading": "^2.1.1",
     "expo-constants": "~15.4.5",

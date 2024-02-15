@@ -3,5 +3,3 @@
 
 export * from './propTypes'
 export * from './fontEnums'
-export * from './validationHookTypes'
-export * from './hookTypes'
