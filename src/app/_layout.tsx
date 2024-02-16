@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
@@ -31,9 +31,11 @@ export default function HomeLayout() {
     }
   }, [fontsLoaded, fontError])
 
-  if (!fontsLoaded && !fontError) {
-    setLoading(true)
-  }
+  useEffect(() => {
+    if (!fontsLoaded || fontError) {
+      setLoading(true)
+    }
+  }, [fontsLoaded, fontError])
 
   if (fontError) {
     return <Error errorText={fontError.message} />

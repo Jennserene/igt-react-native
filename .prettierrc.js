@@ -10,7 +10,7 @@ module.exports = {
     '^react$',
     '<TYPES>',
     '<THIRD_PARTY_MODULES>',
-    '',
+    '', // Empty line
     '@typeDefs(/[^\'"]*)?',
     '',
     '@assets(/[^\'"]*)?',

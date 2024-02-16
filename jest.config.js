@@ -1,6 +1,9 @@
 module.exports = {
   preset: 'jest-expo',
-  setupFilesAfterEnv: ['<rootDir>/node_modules/@testing-library/react-native'],
+  setupFilesAfterEnv: [
+    '<rootDir>/node_modules/@testing-library/react-native',
+    '<rootDir>/__tests__/jest.setup.ts',
+  ],
   transformIgnorePatterns: [
     '<rootDir>/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)',
   ],

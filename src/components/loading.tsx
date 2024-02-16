@@ -11,6 +11,7 @@ export const Loading = () => {
   if (!isLoading) {
     return <View style={styles.hidden} />
   }
+
   return (
     <View style={styles.container}>
       <ActivityIndicator

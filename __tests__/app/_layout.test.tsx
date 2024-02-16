@@ -11,6 +11,14 @@ import '@testing-library/jest-native/extend-expect'
 
 const mockedUseFonts = useFonts as jest.MockedFunction<typeof useFonts>
 
+jest.mock('@components', () => {
+  const originalModule = jest.requireActual('@components')
+  return {
+    ...originalModule,
+    GlobalWrapper: ({ children }: { children: React.ReactNode }) => children,
+  }
+})
+
 describe('HomeLayout', () => {
   beforeEach(() => {
     mockedUseFonts.mockImplementation(() => [true, null])
@@ -20,26 +28,52 @@ describe('HomeLayout', () => {
     jest.resetAllMocks()
   })
 
+  const renderWithLoading = (isLoading: boolean) => {
+    const options = isLoading ? { initialState: isLoading } : undefined
+    return render(
+      <LoadingProvider options={options}>
+        <HomeLayout />
+      </LoadingProvider>,
+    )
+  }
+
   it('renders without crashing', () => {
     render(<HomeLayout />)
   })
 
-  it('renders the appContainer with correct styles when fonts are not loaded', async () => {
-    render(<HomeLayout />)
-    const containerElement = await screen.getByTestId('appContainer')
+  it('renders the appContainer with correct styles when fonts are loaded', async () => {
+    renderWithLoading(false)
+
+    const containerElement = screen.getByTestId('appContainer')
+    const loadingElement = screen.queryByAccessibilityHint('Loading...')
+
     expect(containerElement).toHaveStyle({
       flex: 1,
       backgroundColor: colors.backgrounds.primary,
       alignItems: 'center',
       justifyContent: 'center',
     })
+    expect(loadingElement).toBeNull()
   })
 
-  it.skip('renders the Loading component when fonts are not loaded', async () => {
+  it('renders the Loading component when isLoading is true', () => {
+    renderWithLoading(true)
+
+    const loadingElement = screen.getByAccessibilityHint('Loading...')
+
+    expect(loadingElement).toBeTruthy()
+  })
+
+  it('renders the Loading component when fonts are not loaded', () => {
     mockedUseFonts.mockImplementation(() => [false, null])
 
-    render(<HomeLayout />)
-    const loadingElement = await screen.getByAccessibilityHint('Loading...')
+    render(
+      <LoadingProvider>
+        <HomeLayout />
+      </LoadingProvider>,
+    )
+
+    const loadingElement = screen.getByAccessibilityHint('Loading...')
     expect(loadingElement).toBeTruthy()
   })
 
@@ -50,16 +84,6 @@ describe('HomeLayout', () => {
     render(<HomeLayout />)
     const errorElement = await screen.getByText(errorText)
     expect(errorElement).toBeTruthy()
-  })
-
-  it.skip('renders the Loading component when isLoading is true', () => {
-    render(
-      <LoadingProvider options={{ initialState: true }}>
-        <HomeLayout />
-      </LoadingProvider>,
-    )
-    const loadingElement = screen.getByAccessibilityHint('Loading...')
-    expect(loadingElement).toBeTruthy()
   })
 
   it('does not render the Loading component when isLoading is false (by default)', async () => {

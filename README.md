@@ -5,6 +5,7 @@ A template React Native project to quickly create incremental games with the igt
 [Please visit the actual Docs here](https://123ishatest.github.io/igt-docs)
 
 ## Getting Started
+This readme assumes you are using npm, but you can use yarn if you prefer.
 
 To get started with this template, follow these steps:
 
@@ -66,3 +67,73 @@ Adding additional dependencies should be done using `expo`. For example, to add 
 If you need to add a development dependency, you can add the `-- --save-dev` flag:
 
 `npx expo install axios-mock-adapter -- --save-dev`
+
+## Linting
+This template is configured to enforce linting rules using a pre-commit hook. This will try to fix any linting issues before you commit your code. If there are any issues that cannot be fixed automatically, the commit will be aborted.
+
+You can also run the linter manually by running `npm run lint` or `npm run lint:fix` to automatically fix any issues that can be fixed.
+
+To modify the linter, you can edit the `.eslintrc.js` and `.prettierrc.js` files in the root of the project.
+
+### console.log & console.trace
+By default the linter does not allow console.logs or console.trace in the code to be committed. If you want to allow a specific console.log in your code, you can add `// eslint-disable-next-line no-console` to the line before the console.log.
+
+This rule is set in the `.eslintrc.js` file if you want to modify it.
+
+### import order
+The linter enforces a specific order for imports, in the hope that it will help prevent import conflicts and to ensure that the code is easier to read.
+
+The order is set in the `.pretterrc.js` file, and can be modified to suit your needs.
+
+## Testing
+
+This template is configured to use Jest for unit testing. You can add your tests in the `__tests__` directory.
+
+You can run the tests by running `npm run test`. You can also run the tests in watch mode by running `npm run test:watch` or generate a coverage report by running `npm run test:coverage`.
+
+### Console.log
+This template is configured to mock out console.log in tests.
+
+You can spy on console.log by accessing `global.log` in your tests, for example:
+
+```ts
+const ComponentWithAConsoleLog = (msg: string) => {
+  ...
+  console.log(msg)
+  ...
+}
+
+const logMessage = "This does not show in the test results"
+
+it('should log a message', () => {
+  render(<ComponentWithAConsoleLog msg={logMessage}>)
+
+  expect(global.log).toHaveBeenCalledWith(logMessage) // This will pass
+})
+```
+
+If you want to enable console.log in an individual test you can add this line: `global.log.mockRestore()`
+
+Spies are put back on the console.log and console.trace methods after each test, so calling `mockRestore()` will only affect the current test.
+
+Just remember that by restoring the mock, you will lose the ability to spy on console.log.
+
+For example:
+  
+```ts
+it('should log a message', () => {
+  global.log.mockRestore()
+  render(<ComponentWithAConsoleLog msg="You can see me!">)
+  expect(global.log).toHaveBeenCalledWith('You can see me!') // This will fail
+})
+
+it('should log a message again', () => {
+  render(<ComponentWithAConsoleLog msg="I'm hidden!">)
+  expect(global.log).toHaveBeenCalledWith("I'm hidden!") // This will pass
+})
+```
+Your test results will include:
+```sh
+console.log
+  You can see me!
+```
