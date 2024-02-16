@@ -10,11 +10,11 @@
     "start:ios": "expo start --ios",
     "start:web": "expo start --web",
     "ts:check": "tsc",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "expo": "~50.0.6",
