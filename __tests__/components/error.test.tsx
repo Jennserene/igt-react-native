@@ -1,6 +1,7 @@
-import { Error } from '@components/error'
-import { render } from '@testing-library/react-native'
 import React from 'react'
+import { render } from '@testing-library/react-native'
+
+import { Error } from '@components/error'
 
 describe('Error component', () => {
   const errorText = 'Something went wrong'

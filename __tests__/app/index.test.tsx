@@ -1,6 +1,8 @@
-import Home from '@app/index'
-import { render, waitFor } from '@testing-library/react-native'
 import React from 'react'
+import { render, waitFor } from '@testing-library/react-native'
+
+import Home from '@app/index'
+
 import '@testing-library/jest-native/extend-expect'
 
 describe('App', () => {
@@ -12,9 +14,7 @@ describe('App', () => {
     const { getByText } = render(<Home />)
 
     waitFor(() => {
-      const textElement = getByText(
-        'Open up index.tsx to start working on your app!',
-      )
+      const textElement = getByText('Welcome to your homescreen!')
       expect(textElement).toBeTruthy()
     })
   })

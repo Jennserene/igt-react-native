@@ -1,5 +1,8 @@
 // This folder contains all the context providers that are used throughout the app
 // Re-export all context providers in this folder here.
 
-export * from './globalProviders'
+import AllProviders from './allProviders'
+
 export * from './loadingProvider'
+
+export default AllProviders

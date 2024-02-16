@@ -1,7 +1,9 @@
-import { ErrorProps } from '@typeDefs'
-import { colors } from '@utils'
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+
+import { ErrorProps } from '@typeDefs'
+
+import { colors } from '@utils'
 
 export const Error: React.FC<ErrorProps> = ({ errorText }) => {
   return (

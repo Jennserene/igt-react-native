@@ -1,6 +1,8 @@
-# Expo Template
+# IGT React Native Template
 
-This repository serves as a starting point for creating Expo projects with typeScript, linting, testing, CI, git hooks, and a few commonly used dependencies already set up.
+A template React Native project to quickly create incremental games with the igt-library, with TypeScript, ESLint, Jest, and GitHub Actions pre-configured.
+
+[Please visit the actual Docs here](https://123ishatest.github.io/igt-docs)
 
 ## Getting Started
 
@@ -23,26 +25,13 @@ To get started with this template, follow these steps:
 - `npm run ts:check`: Runs the TypeScript compiler to check for type errors.
 - `npm run lint`: Runs ESLint to check for code quality and consistency issues.
 - `npm run lint:fix`: Runs ESLint and automatically fixes code quality and consistency issues.
-- `npm run test`: Runs Jest to execute unit tests and generate a coverage report.
+- `npm run test`: Runs Jest to execute unit tests.
+- `npm run test:coverage`: Runs Jest to execute unit tests and generate a coverage report.
 - `npm run test:watch`: Runs Jest in watch mode, allowing you to re-run tests automatically when files change.
-
-You can run these scripts by using the `npm run` command followed by the script name. For example, to start the Expo development server, you can run `npm run start`.
-
-- prepare: Installs Husky, a Git hook manager, to enable precommit hooks.
-- start: Starts the Expo development server.
-- android: Starts the Expo development server and opens the app on an Android emulator or device.
-- ios: Starts the Expo development server and opens the app on an iOS simulator or device.
-- web: Starts the Expo development server and opens the app in a web browser.
-- ts:check: Runs the TypeScript compiler to check for type errors.
-- lint: Runs ESLint to check for code quality and consistency issues.
-- lint:fix: Runs ESLint and automatically fixes code quality and consistency issues.
-- test: Runs Jest to execute unit tests and generate a coverage report.
-- test:watch: Runs Jest in watch mode, allowing you to re-run tests automatically when files change.
-
-You can run these scripts by using the npm run command followed by the script name. For example, to start the Expo development server, you can run npm run start.
 
 ## Features
 
+- IGT Library: This template uses the IGT library to create incremental games.
 - TypeScript: This template is configured to use TypeScript for type checking and improved developer experience.
 - Linting: ESLint is set up with a basic configuration to enforce code quality and consistency.
 - Testing: Jest is configured for unit testing your code. You can add your tests in the `__tests__` directory.

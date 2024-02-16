@@ -1,10 +1,11 @@
-import { StyledText } from '@components/base'
 import { StyleSheet, View } from 'react-native'
+
+import { StyledText } from '@components/base'
 
 export default function Home() {
   return (
     <View style={styles.container} testID="container">
-      <StyledText>Open up index.tsx to start working on your app!</StyledText>
+      <StyledText>Welcome to your homescreen!</StyledText>
     </View>
   )
 }

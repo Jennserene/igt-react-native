@@ -11,3 +11,6 @@ node_modules
 # Linting:
 .eslintrc.js
 .prettierrc.js
+
+# TypeScript:
+*.d.ts

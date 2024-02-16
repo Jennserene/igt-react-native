@@ -1,7 +1,9 @@
-import { StyledText } from '@components/base/styledText'
-import { render, screen } from '@testing-library/react-native'
-import { fontWeightEnum } from '@typeDefs'
 import React from 'react'
+import { render, screen } from '@testing-library/react-native'
+
+import { fontWeightEnum } from '@typeDefs'
+
+import { StyledText } from '@components/base/styledText'
 
 describe('StyledText', () => {
   it('renders text with default font weight', async () => {

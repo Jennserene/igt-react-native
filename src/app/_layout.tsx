@@ -1,21 +1,23 @@
-import { Loading, Error } from '@components'
-import { GlobalProviders } from '@components/context'
-import { LoadingContext } from '@components/context/loadingProvider'
-import { fontWeightEnum } from '@typeDefs'
-import { colors } from '@utils'
+import React, { useCallback, useContext } from 'react'
 import { useFonts } from 'expo-font'
-import { Slot } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
-import React, { useCallback, useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+
+import { fontWeightEnum } from '@typeDefs'
+
+import { colors } from '@utils'
+
+import { Error, GlobalWrapper, Loading } from '@components'
+import { LoadingContext } from '@components/context'
+
+import Home from '.'
 
 SplashScreen.preventAutoHideAsync()
 
 export default function HomeLayout() {
-  const { isLoading } = useContext(LoadingContext)
-
+  const { setLoading } = useContext(LoadingContext)
   const [fontsLoaded, fontError] = useFonts({
     [fontWeightEnum.thin]: require('@assets/fonts/Inter-Thin.ttf'),
     [fontWeightEnum.regular]: require('@assets/fonts/Inter-Regular.ttf'),
@@ -25,11 +27,12 @@ export default function HomeLayout() {
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
       await SplashScreen.hideAsync()
+      setLoading(false)
     }
   }, [fontsLoaded, fontError])
 
   if (!fontsLoaded && !fontError) {
-    return <Loading />
+    setLoading(true)
   }
 
   if (fontError) {
@@ -37,17 +40,17 @@ export default function HomeLayout() {
   }
 
   return (
-    <GlobalProviders>
+    <GlobalWrapper>
       <SafeAreaView
         style={styles.appContainer}
         testID="appContainer"
         onLayout={onLayoutRootView}
       >
-        {isLoading ? <Loading /> : null}
-        <Slot />
+        <Loading />
+        <Home />
         <StatusBar style="auto" />
       </SafeAreaView>
-    </GlobalProviders>
+    </GlobalWrapper>
   )
 }
 
@@ -57,5 +60,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgrounds.primary,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  gestureHandler: {
+    flex: 1,
   },
 })

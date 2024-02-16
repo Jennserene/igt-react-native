@@ -16,6 +16,7 @@ module.exports = {
     '@app/(.*)': '<rootDir>/src/app/$1',
     '@assets/(.*)': '<rootDir>/src/assets/$1',
     '@components/(.*)': '<rootDir>/src/components/$1',
+    '@game/(.*)': '<rootDir>/src/game/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@typeDefs/(.*)': '<rootDir>/src/typeDefs/$1',
     '@utils/(.*)': '<rootDir>/src/utils/$1',

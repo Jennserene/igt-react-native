@@ -1,6 +1,7 @@
-import { StyledTextProps, fontWeightEnum } from '@typeDefs'
 import React from 'react'
 import { Text } from 'react-native'
+
+import { fontWeightEnum, StyledTextProps } from '@typeDefs'
 
 export const StyledText: React.FC<StyledTextProps> = ({
   fontWeight = fontWeightEnum.regular,

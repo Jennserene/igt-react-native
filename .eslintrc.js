@@ -1,20 +1,18 @@
 module.exports = {
   root: true,
-  extends: ["universe/native", "universe/shared/typescript-analysis"],
+  extends: ['universe/native', 'universe/shared/typescript-analysis'],
   overrides: [
     {
-      files: ["*.ts", "*.tsx", "d.ts"],
+      files: ['*.ts', '*.tsx', 'd.ts'],
       parserOptions: {
-        project: "./tsconfig.json",
+        project: './tsconfig.json',
       },
     },
   ],
   rules: {
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { argsIgnorePattern: "^_" }
-    ],
-    "prettier/prettier": "error",
-  }
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'prettier/prettier': 'error',
+    'import/order': 'off',
+  },
 }

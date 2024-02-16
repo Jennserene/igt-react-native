@@ -13,7 +13,9 @@ export interface LoadingContextProps {
 }
 
 export interface LoadingProviderProps extends PropsWithChildren {
-  initialState?: boolean
+  options?: {
+    initialState: boolean
+  }
 }
 
 export interface ErrorProps {

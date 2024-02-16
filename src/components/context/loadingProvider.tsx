@@ -1,5 +1,6 @@
-import { LoadingContextProps, LoadingProviderProps } from '@typeDefs'
 import React, { createContext, useState } from 'react'
+
+import { LoadingContextProps, LoadingProviderProps } from '@typeDefs'
 
 const LoadingContext = createContext<LoadingContextProps>({
   isLoading: false,
@@ -8,8 +9,9 @@ const LoadingContext = createContext<LoadingContextProps>({
 
 const LoadingProvider: React.FC<LoadingProviderProps> = ({
   children,
-  initialState = false,
+  options = { initialState: false },
 }) => {
+  const { initialState } = options
   const [isLoading, setIsLoading] = useState(initialState)
 
   const setLoading = (isLoading: boolean) => {

@@ -1,8 +1,8 @@
 module.exports = {
   expo: {
-    name: 'expo-template',
-    slug: 'expo-template',
-    scheme: 'expo-template',
+    name: 'IGT React Native',
+    slug: 'igt-react-native',
+    scheme: 'igt-react-native',
     version: '0.1.0',
     orientation: 'portrait',
     icon: './src/assets/native/icon.png',

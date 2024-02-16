@@ -1,10 +1,11 @@
+import React, { useContext } from 'react'
+import { fireEvent, render } from '@testing-library/react-native'
+import { Button, Text, View } from 'react-native'
+
 import {
   LoadingContext,
   LoadingProvider,
 } from '@components/context/loadingProvider'
-import { render, fireEvent } from '@testing-library/react-native'
-import React, { useContext } from 'react'
-import { View, Button, Text } from 'react-native'
 
 describe('LoadingProvider', () => {
   it('should render children', () => {
