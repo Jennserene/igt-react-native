@@ -12,7 +12,7 @@ import { colors } from '@utils'
 import { Error, GlobalWrapper, Loading } from '@components'
 import { LoadingContext } from '@components/context'
 
-import Home from '.'
+import Home from './home'
 
 SplashScreen.preventAutoHideAsync()
 

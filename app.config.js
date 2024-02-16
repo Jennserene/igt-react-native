@@ -27,7 +27,6 @@ module.exports = {
       favicon: './src/assets/native/favicon.png',
     },
     plugins: [
-      'expo-router',
       [
         'expo-font',
         {
@@ -39,8 +38,5 @@ module.exports = {
         },
       ],
     ],
-    experiments: {
-      typedRoutes: true,
-    },
   },
 }

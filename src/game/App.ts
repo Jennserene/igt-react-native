@@ -16,7 +16,7 @@
 
 //   public static getDefaultGame(): MyGame {
 //     return new MyGame({
-//       settings: new IgtSettings(),
+//       game: new IgtSettings(),
 //       // Add your own features here.
 //     })
 //   }

@@ -1,4 +1,4 @@
-// This folder contains all the type and enum definitions that are used throughout the app
+// This folder contains all the type and enum definitions that are used throughout the screens
 // Re-export all types and enums in this folder here.
 
 export * from './propTypes'

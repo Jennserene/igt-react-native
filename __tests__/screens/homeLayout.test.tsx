@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font'
 import { colors } from '@utils'
 
 import { LoadingProvider } from '@components/context'
-import HomeLayout from '@app/_layout'
+import HomeLayout from '@screens/homeLayout'
 
 import '@testing-library/jest-native/extend-expect'
 
@@ -67,11 +67,7 @@ describe('HomeLayout', () => {
   it('renders the Loading component when fonts are not loaded', () => {
     mockedUseFonts.mockImplementation(() => [false, null])
 
-    render(
-      <LoadingProvider>
-        <HomeLayout />
-      </LoadingProvider>,
-    )
+    renderWithLoading(false)
 
     const loadingElement = screen.getByAccessibilityHint('Loading...')
     expect(loadingElement).toBeTruthy()
@@ -87,12 +83,14 @@ describe('HomeLayout', () => {
   })
 
   it('does not render the Loading component when isLoading is false (by default)', async () => {
-    render(
-      <LoadingProvider>
-        <HomeLayout />
-      </LoadingProvider>,
-    )
+    renderWithLoading(false)
     const loadingElement = screen.queryByAccessibilityHint('Loading...')
     expect(loadingElement).toBeNull()
+  })
+
+  it('renders the Home component by default', () => {
+    renderWithLoading(false)
+    const homeElement = screen.getByText('Welcome to your homescreen!')
+    expect(homeElement).toBeTruthy()
   })
 })

@@ -1,5 +1,5 @@
 import { registerRootComponent } from 'expo'
 
-import HomeLayout from '@app/_layout'
+import HomeLayout from '@screens/homeLayout'
 
 registerRootComponent(HomeLayout)

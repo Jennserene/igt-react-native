@@ -39,8 +39,6 @@ To get started with this template, follow these steps:
 - Pre-commit Hook: This template includes a precommit hook that runs linting and testing before committing and pushing your code, respectively.
 - Pre-push Hook: This template includes a prepush hook that runs tests before pushing your code.
 - CI: This template includes a GitHub Actions workflow that runs linting and tests on every pull request.
-- Commonly Used Dependencies: This template includes some commonly used dependencies such as Expo Router.
-  - [Expo Router](https://docs.expo.dev/router/introduction/): This template includes the Expo router for easy navigation between screens.
 
 ## Folder Structure
 
