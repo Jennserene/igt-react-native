@@ -2,21 +2,18 @@ import React, { useCallback, useContext, useEffect } from 'react'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { View } from 'react-native'
 
 import { fontWeightEnum } from '@typeDefs'
 
-import { colors } from '@utils'
-
+import { globalStyles as styles } from '@styles'
 import { Error, GlobalWrapper, Loading } from '@components'
 import { LoadingContext } from '@components/context'
-
-import Home from './home'
+import RootLayout from '@screens/rootLayout'
 
 SplashScreen.preventAutoHideAsync()
 
-export default function HomeLayout() {
+export default function App() {
   const { setLoading } = useContext(LoadingContext)
   const [fontsLoaded, fontError] = useFonts({
     [fontWeightEnum.thin]: require('@assets/fonts/Inter-Thin.ttf'),
@@ -43,27 +40,15 @@ export default function HomeLayout() {
 
   return (
     <GlobalWrapper>
-      <SafeAreaView
-        style={styles.appContainer}
+      <View
+        style={styles.stdContainer}
         testID="appContainer"
         onLayout={onLayoutRootView}
       >
         <Loading />
-        <Home />
+        <RootLayout />
         <StatusBar style="auto" />
-      </SafeAreaView>
+      </View>
     </GlobalWrapper>
   )
 }
-
-const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1,
-    backgroundColor: colors.backgrounds.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  gestureHandler: {
-    flex: 1,
-  },
-})

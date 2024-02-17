@@ -3,7 +3,7 @@ import { Alert, Pressable, Text } from 'react-native'
 
 // import App from '@game'
 
-const Settings = () => {
+export const GameSettings = () => {
   const confirmAlert = () =>
     Alert.alert('Reset Save', 'Are you sure you want to reset your save?', [
       {
@@ -26,5 +26,3 @@ const Settings = () => {
     </Pressable>
   )
 }
-
-export default Settings

@@ -11,6 +11,9 @@
       "@api/*": [
         "./src/api/*"
       ],
+      "@app": [
+        "src/app"
+      ],
       "@assets/*": [
         "./src/assets/*"
       ],
@@ -34,6 +37,12 @@
       ],
       "@screens/*": [
         "src/screens/*"
+      ],
+      "@styles": [
+        "./src/styles/index"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
       ],
       "@typeDefs": [
         "src/typeDefs/index"

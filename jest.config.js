@@ -16,11 +16,13 @@ module.exports = {
   moduleNameMapper: {
     // Paths defined in tsconfig.json:
     '@api/(.*)': '<rootDir>/src/api/$1',
+    '@app': '<rootDir>/src/app.tsx',
     '@assets/(.*)': '<rootDir>/src/assets/$1',
     '@components/(.*)': '<rootDir>/src/components/$1',
     '@game/(.*)': '<rootDir>/src/game/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '@screens/(.*)': '<rootDir>/src/screens/$1',
+    '@styles/(.*)': '<rootDir>/src/styles/$1',
     '@typeDefs/(.*)': '<rootDir>/src/typeDefs/$1',
     '@utils/(.*)': '<rootDir>/src/utils/$1',
     // Don't forget to add the path to the tsconfig.json above this.

@@ -1,3 +1,3 @@
-// import { IgtFeatures } from 'incremental-game-template'
+import { IgtFeatures } from '@123ishatest/igt-library'
 
-// export interface MyFeatures extends IgtFeatures {}
+export interface MyFeatures extends IgtFeatures {}

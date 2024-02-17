@@ -22,3 +22,7 @@ export interface ErrorProps {
   errorText: string
   testID?: string
 }
+
+export interface SideBarProps extends PropsWithChildren {
+  isOpen: boolean
+}

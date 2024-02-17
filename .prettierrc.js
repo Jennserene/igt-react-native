@@ -19,6 +19,7 @@ module.exports = {
     '@hooks(/[^\'"]*)?',
     '@api(/[^\'"]*)?',
     '',
+    '@styles(/[^\'"]*)?',
     '@components(/[^\'"]*)?',
     '@screens(/[^\'"]*)?',
     '',
