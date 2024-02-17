@@ -1,7 +1,7 @@
-// import App from '@game'
-// import { MyGame } from '@game/MyGame'
+import App from '@game'
+import { MyGame } from '@game/MyGame'
 
-describe.skip('App', () => {
+describe('App', () => {
   beforeEach(() => {
     jest.resetModules()
   })

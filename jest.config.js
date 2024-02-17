@@ -4,8 +4,9 @@ module.exports = {
     '<rootDir>/node_modules/@testing-library/react-native',
     '<rootDir>/__tests__/jest.setup.ts',
   ],
+  testEnvironment: 'jsdom',
   transformIgnorePatterns: [
-    '<rootDir>/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)',
+    '<rootDir>/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|@123ishatest/igt-library|lodash-es)',
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}'],
