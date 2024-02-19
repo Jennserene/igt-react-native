@@ -1,6 +1,25 @@
 import { StyleSheet } from 'react-native'
 
 export const navStyles = StyleSheet.create({
+  sidebarContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    flex: 1,
+    maxWidth: 200,
+  },
+  drawerContainer: {
+    flex: 1,
+    height: '100%',
+  },
+  categoryContainer: {
+    marginBottom: 16,
+  },
+  categoryTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
   container: {
     flex: 1,
     justifyContent: 'space-between',

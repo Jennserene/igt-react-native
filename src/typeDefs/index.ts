@@ -3,3 +3,5 @@
 
 export * from './propTypes'
 export * from './fontEnums'
+export * from './assetTypes'
+export * from './screenTypes'

@@ -3,3 +3,4 @@
 
 export * from './globalStyles'
 export * from './navigationStyles'
+export * from './baseStyles'

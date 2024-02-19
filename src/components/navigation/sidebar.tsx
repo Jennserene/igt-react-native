@@ -1,33 +1,24 @@
 import React from 'react'
-import { Platform, StyleSheet, View } from 'react-native'
+import { Platform, View, ViewStyle } from 'react-native'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
 
-import { SideBarProps } from '@typeDefs'
+import { SidebarProps } from '@typeDefs'
+
+import { navStyles as styles } from '@styles'
 
 import Drawer from './drawer'
 import SideMenu from './sideMenu'
 
-const SideBar = (props: SideBarProps) => {
+export const SideBar = (props: SidebarProps) => {
   const { isOpen, children } = props
   const { height: safeHeight } = useSafeAreaFrame()
   const isOnWeb = Platform.OS === 'web'
-
-  const styles = StyleSheet.create({
-    container: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      flex: 1,
-      height: safeHeight,
-      maxWidth: 200,
-    },
-  })
+  const sidebarHeight = { height: safeHeight } as ViewStyle
+  const sideMenu = <SideMenu>{children}</SideMenu>
 
   return (
-    <View style={styles.container}>
-      {isOnWeb ? <SideMenu /> : <Drawer isOpen={isOpen}>{children}</Drawer>}
+    <View style={[styles.sidebarContainer, sidebarHeight]}>
+      {isOnWeb ? sideMenu : <Drawer isOpen={isOpen}>{sideMenu}</Drawer>}
     </View>
   )
 }
-
-export default SideBar

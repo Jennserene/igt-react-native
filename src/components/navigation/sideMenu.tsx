@@ -1,28 +1,24 @@
-import React from 'react'
-import { ScrollView, Text, View } from 'react-native'
+import React, { PropsWithChildren } from 'react'
+import { ScrollView, View } from 'react-native'
 
 import { navStyles as styles } from '@styles'
+import { StyledText } from '@components/base'
 
-const SideMenu = () => {
+const SideMenu = (props: PropsWithChildren) => {
+  const { children } = props
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Menu Header</Text>
+        <StyledText style={styles.headerText}>Menu Header</StyledText>
       </View>
       <ScrollView
         style={styles.navigationScroll}
         contentContainerStyle={styles.navContentAndFooter}
       >
-        <View style={styles.navContent}>
-          {/* Add your navigation options here */}
-          <Text>Option 1</Text>
-          <Text>Option 2</Text>
-          <Text>Option 3</Text>
-          <Text>Option 4</Text>
-          <Text>Option 5</Text>
-        </View>
+        <View style={styles.navContent}>{children}</View>
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Menu Footer</Text>
+          <StyledText style={styles.footerText}>Menu Footer</StyledText>
         </View>
       </ScrollView>
     </View>

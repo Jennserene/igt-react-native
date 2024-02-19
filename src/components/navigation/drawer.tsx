@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { StyleSheet } from 'react-native'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import Animated, {
   useAnimatedStyle,
@@ -9,9 +8,11 @@ import Animated, {
 } from 'react-native-reanimated'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
 
-import { SideBarProps } from '@typeDefs'
+import { SidebarProps } from '@typeDefs'
 
-const Drawer = (props: SideBarProps) => {
+import { navStyles as styles } from '@styles'
+
+const Drawer = (props: SidebarProps) => {
   const { isOpen, children } = props
   const frame = useSafeAreaFrame()
   const offset = useSharedValue(0)
@@ -55,18 +56,11 @@ const Drawer = (props: SideBarProps) => {
 
   return (
     <GestureDetector gesture={pan}>
-      <Animated.View style={[styles.container, animatedContainerStyle]}>
+      <Animated.View style={[styles.drawerContainer, animatedContainerStyle]}>
         {children}
       </Animated.View>
     </GestureDetector>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    height: '100%',
-  },
-})
 
 export default Drawer

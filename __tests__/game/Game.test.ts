@@ -1,28 +1,24 @@
-import App from '@game'
+import { GameState } from '@123ishatest/igt-library'
+
+import Game from '@game'
 import { MyGame } from '@game/MyGame'
 
-describe('App', () => {
+describe('Game', () => {
   beforeEach(() => {
     jest.resetModules()
   })
 
-  it('should set inProduction to true when NODE_ENV is production', () => {
-    process.env.NODE_ENV = 'production'
-    expect(App.inProduction).toBe(true)
-  })
-
-  it('should set inProduction to false when NODE_ENV is not production', () => {
-    process.env.NODE_ENV = 'development'
-    expect(App.inProduction).toBe(false)
+  it('has inProduction set to false by default', () => {
+    expect(Game.inProduction).toBe(false)
   })
 
   it('should start the game', () => {
-    App.start()
-    expect(App.game.state).toBe('running')
+    Game.start()
+    expect(Game.game.state).toBe(GameState.Playing)
   })
 
   it('should return a default game instance', () => {
-    const defaultGame = App.getDefaultGame()
+    const defaultGame = Game.getDefaultGame()
     expect(defaultGame).toBeInstanceOf(MyGame)
   })
 })

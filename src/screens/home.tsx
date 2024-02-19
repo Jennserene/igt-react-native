@@ -1,16 +1,17 @@
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { StyledText } from '@components/base'
 
 export default function Home() {
   return (
-    <View style={styles.container} testID="container">
+    <View style={homeStyles.container}>
       <StyledText>Welcome to your homescreen!</StyledText>
     </View>
   )
 }
 
-const styles = StyleSheet.create({
+const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
