@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react-native'
+import { TextStyle } from 'react-native'
 
 import { fontWeightEnum } from '@typeDefs'
 
@@ -25,5 +26,16 @@ describe('StyledText', () => {
 
     const textElement = await screen.getByText('Hello World')
     expect(textElement.props.style[0]).toHaveProperty('fontFamily', fontWeight)
+  })
+
+  it('renders text with correct font weight from style prop', async () => {
+    const fontWeight = { fontWeight: 'bold' } as TextStyle
+    render(<StyledText style={fontWeight}>Hello World</StyledText>)
+
+    const textElement = await screen.getByText('Hello World')
+    expect(textElement.props.style[0]).toHaveProperty(
+      'fontFamily',
+      fontWeightEnum.bold,
+    )
   })
 })

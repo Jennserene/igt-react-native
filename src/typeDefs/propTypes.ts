@@ -1,5 +1,12 @@
-import { PropsWithChildren } from 'react'
-import { ImageStyle, TextProps, TextStyle, ViewStyle } from 'react-native'
+import { PropsWithChildren, ReactNode } from 'react'
+import {
+  ImageStyle,
+  PressableProps,
+  StyleProp,
+  TextProps,
+  TextStyle,
+  ViewStyle,
+} from 'react-native'
 
 import { fontWeightEnum } from './fontEnums'
 import { ExternalLinkType, ScreenEnum } from './screenTypes'
@@ -7,6 +14,12 @@ import { ExternalLinkType, ScreenEnum } from './screenTypes'
 export interface StyledTextProps extends TextProps {
   fontWeight?: fontWeightEnum
   style?: TextStyle
+}
+
+export interface StyledButtonProps extends PressableProps {
+  style?: StyleProp<ViewStyle>
+  activeColor?: string
+  children: ReactNode
 }
 
 export interface ProgressBarProps {

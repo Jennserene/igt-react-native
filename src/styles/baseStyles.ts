@@ -33,3 +33,21 @@ export const baseStyles = StyleSheet.create({
     lineHeight: 16,
   },
 })
+
+export const buttonStyles = StyleSheet.create({
+  styledButton: {
+    borderRadius: 4,
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  blue: {
+    backgroundColor: colors.buttons.blue.standard,
+  },
+  green: {
+    backgroundColor: colors.buttons.green.standard,
+  },
+  red: {
+    backgroundColor: colors.buttons.red.standard,
+  },
+})

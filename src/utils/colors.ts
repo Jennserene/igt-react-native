@@ -45,6 +45,24 @@ export const colors = {
     activeBg: isLight ? '#f5f5f5' : '#e4e7eb',
     activeText: isLight ? commonColors.text.dark : commonColors.text.light,
   },
+  buttons: {
+    blue: {
+      standard: '#3b82f6',
+      hover: '#2563eb',
+      active: '#1e40af',
+    },
+    green: {
+      standard: '#22c55e',
+      hover: '#16a34a',
+      active: '#15803d',
+    },
+    red: {
+      standard: '#ef4444',
+      hover: '#dc2626',
+      active: '#b91c1c',
+    },
+    gray: '#d1d5db',
+  },
   progressBar: {
     background: '#f48fb1',
     foreground: '#e91e63',

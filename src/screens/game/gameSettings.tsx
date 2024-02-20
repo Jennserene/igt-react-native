@@ -1,7 +1,12 @@
 import React from 'react'
-import { Alert, Pressable, Text } from 'react-native'
+import { Alert } from 'react-native'
 
-// import App from '@game'
+import { colors } from '@utils'
+
+import { buttonStyles } from '@styles'
+import { StyledButton, StyledText } from '@components/base'
+
+import App from '@game'
 
 export const GameSettings = () => {
   const confirmAlert = () =>
@@ -17,12 +22,16 @@ export const GameSettings = () => {
     ])
 
   const handleResetSave = () => {
-    // App.game.deleteSave()
+    App.game.deleteSave()
   }
 
   return (
-    <Pressable onPress={confirmAlert}>
-      <Text>Reset Save</Text>
-    </Pressable>
+    <StyledButton
+      style={buttonStyles.red}
+      activeColor={colors.buttons.red.active}
+      onPress={confirmAlert}
+    >
+      <StyledText>Reset Save</StyledText>
+    </StyledButton>
   )
 }
