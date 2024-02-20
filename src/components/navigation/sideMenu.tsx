@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { ScrollView, View } from 'react-native'
+import { Image, ScrollView, View } from 'react-native'
 
 import { navStyles as styles } from '@styles'
 import { StyledText } from '@components/base'
@@ -8,9 +8,12 @@ const SideMenu = (props: PropsWithChildren) => {
   const { children } = props
 
   return (
-    <View style={styles.container}>
+    <View style={styles.sideMenuContainer}>
       <View style={styles.header}>
-        <StyledText style={styles.headerText}>Menu Header</StyledText>
+        <Image source={require('@assets/logo.png')} style={styles.logo} />
+        <StyledText style={styles.headerText}>
+          Incremental Game Template
+        </StyledText>
       </View>
       <ScrollView
         style={styles.navigationScroll}

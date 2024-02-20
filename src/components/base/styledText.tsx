@@ -1,22 +1,28 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, TextStyle } from 'react-native'
 
 import { fontWeightEnum, StyledTextProps } from '@typeDefs'
 
-export const StyledText: React.FC<StyledTextProps> = ({
-  fontWeight = fontWeightEnum.regular,
-  style,
-  children,
-  ...rest
-}) => {
-  const textStyle = {
-    fontFamily: fontWeight as string,
-    ...((style ? style : {}) as object),
+import { baseStyles } from '@styles'
+
+export const StyledText = (props: StyledTextProps) => {
+  const { children } = props
+  const { fontWeight, ...style } = props.style ?? ({} as TextStyle)
+
+  const stringToWeight = (fontWeight: TextStyle['fontWeight']): string => {
+    if (fontWeight === '100') return fontWeightEnum.thin
+    if (fontWeight === 'bold') return fontWeightEnum.bold
+    return fontWeightEnum.regular
+  }
+
+  const weight = props.fontWeight
+    ? props.fontWeight
+    : stringToWeight(fontWeight)
+  const textStyle: TextStyle = {
+    fontFamily: weight,
   }
 
   return (
-    <Text style={textStyle} {...rest}>
-      {children}
-    </Text>
+    <Text style={[textStyle, style, baseStyles.styledText]}>{children}</Text>
   )
 }

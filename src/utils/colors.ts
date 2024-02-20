@@ -8,6 +8,10 @@ const commonColors = {
     light: '#000000',
     dark: '#ffffff',
   },
+  background: {
+    light: '#f5f5f5',
+    dark: '#1f2937',
+  },
   notification: {
     success: '#4caf50',
     error: '#f44336',
@@ -17,8 +21,10 @@ const commonColors = {
 
 export const colors = {
   backgrounds: {
-    primary: '#ffffff',
-    sideBar: '#f0f0f0',
+    primary: isLight
+      ? commonColors.background.light
+      : commonColors.background.dark,
+    sideBar: isLight ? '#000000' : '#111827',
     error: '#ff0000',
   },
   activityIndicator: '#0000ff',
@@ -33,6 +39,11 @@ export const colors = {
   },
   text: {
     ...commonColors.text,
+    primary: isLight ? commonColors.text.light : commonColors.text.dark,
+  },
+  link: {
+    activeBg: isLight ? '#f5f5f5' : '#e4e7eb',
+    activeText: isLight ? commonColors.text.dark : commonColors.text.light,
   },
   progressBar: {
     background: '#f48fb1',

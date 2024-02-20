@@ -89,10 +89,10 @@ This template is configured to use Jest for unit testing. You can add your tests
 
 You can run the tests by running `npm run test`. You can also run the tests in watch mode by running `npm run test:watch` or generate a coverage report by running `npm run test:coverage`.
 
-### Console.log
-This template is configured to mock out console.log in tests.
+### Console.log & debug & trace
+This template is configured to mock out `console.log`, `console.debug`, and `console.trace` in tests.
 
-You can spy on console.log by accessing `global.log` in your tests, for example:
+You can spy on `console.log`, `debug`, or `trace`, by accessing the respective spy in `global.spies`, such as `global.spies.log` in your tests. For example:
 
 ```ts
 const ComponentWithAConsoleLog = (msg: string) => {
@@ -106,13 +106,13 @@ const logMessage = "This does not show in the test results"
 it('should log a message', () => {
   render(<ComponentWithAConsoleLog msg={logMessage}>)
 
-  expect(global.log).toHaveBeenCalledWith(logMessage) // This will pass
+  expect(global.spies.log).toHaveBeenCalledWith(logMessage) // This will pass
 })
 ```
 
-If you want to enable console.log in an individual test you can add this line: `global.log.mockRestore()`
+If you want to enable `console.log` in an individual test you can add this line: `global.spies.restore()`
 
-Spies are put back on the console.log and console.trace methods after each test, so calling `mockRestore()` will only affect the current test.
+Spies are put back on the `console.log`, `debug` and `trace` methods after each test, so calling `mockRestore()` will only affect the current test.
 
 Just remember that by restoring the mock, you will lose the ability to spy on console.log.
 
@@ -120,14 +120,14 @@ For example:
   
 ```ts
 it('should log a message', () => {
-  global.log.mockRestore()
+  global.spies.restore()
   render(<ComponentWithAConsoleLog msg="You can see me!">)
-  expect(global.log).toHaveBeenCalledWith('You can see me!') // This will fail
+  expect(global.spies.log).toHaveBeenCalledWith('You can see me!') // This will fail
 })
 
 it('should log a message again', () => {
   render(<ComponentWithAConsoleLog msg="I'm hidden!">)
-  expect(global.log).toHaveBeenCalledWith("I'm hidden!") // This will pass
+  expect(global.spies.log).toHaveBeenCalledWith("I'm hidden!") // This will pass
 })
 ```
 Your test results will include:

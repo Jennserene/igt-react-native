@@ -1,20 +1,34 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 
+import { HomeProps } from '@typeDefs'
+
+import { homeStyle } from '@styles'
 import { StyledText } from '@components/base'
+import { ExternalLink } from '@components/navigation'
 
-export default function Home() {
+const Home = (props: HomeProps) => {
+  const { externalLinks } = props
+
+  const renderExternalLinks = () => {
+    if (!externalLinks) return null
+    return externalLinks.map((link, index) => (
+      <ExternalLink
+        key={`homepageLink-${link.name}-${index}`}
+        {...link}
+        size="large"
+      />
+    ))
+  }
+
   return (
-    <View style={homeStyles.container}>
+    <View style={homeStyle.container}>
       <StyledText>Welcome to your homescreen!</StyledText>
+      <View style={homeStyle.fries}>
+        {externalLinks && renderExternalLinks()}
+      </View>
     </View>
   )
 }
 
-const homeStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+export default Home

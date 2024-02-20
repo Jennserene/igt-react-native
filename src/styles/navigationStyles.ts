@@ -1,12 +1,17 @@
 import { StyleSheet } from 'react-native'
 
+import { colors } from '@utils'
+
+import { globalParentStyles } from './globalStyles'
+
 export const navStyles = StyleSheet.create({
   sidebarContainer: {
     position: 'absolute',
     top: 0,
     left: 0,
     flex: 1,
-    maxWidth: 200,
+    maxWidth: 240,
+    zIndex: 100,
   },
   drawerContainer: {
     flex: 1,
@@ -20,27 +25,34 @@ export const navStyles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  container: {
-    flex: 1,
+  sideMenuContainer: {
+    ...globalParentStyles.stdContainer,
     justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '100%',
-    width: '100%',
+    backgroundColor: colors.backgrounds.sideBar,
+    paddingHorizontal: 16,
   },
   header: {
     height: 50,
-    backgroundColor: 'lightblue',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 8,
+    marginBottom: 40,
+    padding: 8,
+    flexDirection: 'row',
+  },
+  logo: {
+    height: 48,
+    width: 48,
   },
   headerText: {
     fontSize: 18,
+    lineHeight: 28,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   navigationScroll: {
     flex: 1,
     width: '100%',
-    backgroundColor: 'white',
   },
   navContentAndFooter: {
     flex: 1,
@@ -53,12 +65,43 @@ export const navStyles = StyleSheet.create({
   },
   footer: {
     height: 50,
-    backgroundColor: 'lightgray',
-
     justifyContent: 'center',
     alignItems: 'center',
   },
   footerText: {
+    fontSize: 16,
+  },
+})
+
+export const linkStylesSmall = StyleSheet.create({
+  linkContainer: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    margin: 8,
+    flexDirection: 'row-reverse',
+    flexWrap: 'nowrap',
+  },
+  linkImage: {
+    width: 25,
+    height: 25,
+  },
+  linkText: {
+    fontSize: 12,
+  },
+})
+
+export const linkStylesLarge = StyleSheet.create({
+  linkContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 16,
+    flexDirection: 'row',
+  },
+  linkImage: {
+    width: 100,
+    height: 100,
+  },
+  linkText: {
     fontSize: 16,
   },
 })

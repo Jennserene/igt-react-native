@@ -10,7 +10,7 @@ describe('StyledText', () => {
     render(<StyledText>Hello World</StyledText>)
 
     const textElement = await screen.getByText('Hello World')
-    expect(textElement.props.style).toHaveProperty(
+    expect(textElement.props.style[0]).toHaveProperty(
       'fontFamily',
       fontWeightEnum.regular,
     )
@@ -24,6 +24,6 @@ describe('StyledText', () => {
     render(<StyledText fontWeight={fontWeight}>Hello World</StyledText>)
 
     const textElement = await screen.getByText('Hello World')
-    expect(textElement.props.style).toHaveProperty('fontFamily', fontWeight)
+    expect(textElement.props.style[0]).toHaveProperty('fontFamily', fontWeight)
   })
 })

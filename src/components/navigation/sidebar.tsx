@@ -11,13 +11,20 @@ import SideMenu from './sideMenu'
 
 export const SideBar = (props: SidebarProps) => {
   const { isOpen, children } = props
-  const { height: safeHeight } = useSafeAreaFrame()
+  const { height: safeHeight, width: safeWidth } = useSafeAreaFrame()
+  const webWidth = styles.sidebarContainer.maxWidth
+  const mobileWidth = (80 / 100) * safeWidth
   const isOnWeb = Platform.OS === 'web'
-  const sidebarHeight = { height: safeHeight } as ViewStyle
+
+  const sidebarSize = {
+    height: safeHeight,
+    width: isOnWeb ? webWidth : mobileWidth,
+  } as ViewStyle
+
   const sideMenu = <SideMenu>{children}</SideMenu>
 
   return (
-    <View style={[styles.sidebarContainer, sidebarHeight]}>
+    <View style={[styles.sidebarContainer, sidebarSize]}>
       {isOnWeb ? sideMenu : <Drawer isOpen={isOpen}>{sideMenu}</Drawer>}
     </View>
   )

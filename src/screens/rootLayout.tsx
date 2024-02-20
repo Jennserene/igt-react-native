@@ -16,38 +16,47 @@ import {
   SideBar,
 } from '@components/navigation'
 
+import Game from '@game'
+
 import { GameSettings } from './game'
+import DeveloperPanelScreen from './game/developerPanel'
 import Home from './home'
 
 const externalLinks: ExternalLinksType = [
   {
     name: 'Discord',
     url: 'https://discord.gg/WUYDqct2Ef',
-    imagePath: '@assets/socials/discord.png',
+    image: require('@assets/socials/discord.png'),
   },
   {
     name: 'Documentation',
     url: 'https://123ishatest.github.io/igt-docs',
-    imagePath: '@assets/socials/docusaurus.svg',
+    image: require('@assets/socials/docusaurus.svg'),
   },
   {
     name: 'Github',
     url: 'https://github.com/123ishaTest/igt-library',
-    imagePath: '@assets/socials/github.png',
+    image: require('@assets/socials/github.png'),
   },
 ]
 
 const RootLayout: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [menuOpen, setMenuOpen] = React.useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeScreen, setActiveScreen] = React.useState(ScreenEnum.Home)
+  const game = Game.getDefaultGame()
 
   const screenList: ScreensType = {
     Home: {
       screen: Home,
       props: { externalLinks },
       category: CategoryEnum.Other,
+    },
+    DeveloperPanel: {
+      name: 'Developer Panel',
+      screen: DeveloperPanelScreen,
+      props: { developerPanel: game.getDeveloperPanel() },
+      category: CategoryEnum.Game,
     },
     Settings: {
       screen: GameSettings,
@@ -104,7 +113,7 @@ const RootLayout: React.FC = () => {
         {renderMenuItems()}
         <Category title="Links">{renderExternalLinks}</Category>
       </SideBar>
-      <View style={styles.stdContainer}>{renderScreen()}</View>
+      <View style={styles.rootContainer}>{renderScreen()}</View>
     </View>
   )
 }

@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { colors } from '@utils'
+
 export const globalParentStyles = StyleSheet.create({
   stdContainer: {
     flex: 1,
@@ -16,5 +18,9 @@ export const globalStyles = StyleSheet.create({
   stdContainerRow: {
     ...globalParentStyles.stdContainer,
     flexDirection: 'row',
+  },
+  rootContainer: {
+    ...globalParentStyles.stdContainer,
+    backgroundColor: colors.backgrounds.primary,
   },
 })

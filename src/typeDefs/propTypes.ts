@@ -1,11 +1,12 @@
 import { PropsWithChildren } from 'react'
-import { TextProps, TextStyle, ViewStyle } from 'react-native'
+import { ImageStyle, TextProps, TextStyle, ViewStyle } from 'react-native'
 
 import { fontWeightEnum } from './fontEnums'
-import { ScreenEnum } from './screenTypes'
+import { ExternalLinkType, ScreenEnum } from './screenTypes'
 
 export interface StyledTextProps extends TextProps {
   fontWeight?: fontWeightEnum
+  style?: TextStyle
 }
 
 export interface ProgressBarProps {
@@ -35,10 +36,15 @@ export interface SidebarProps extends PropsWithChildren {
   isOpen: boolean
 }
 
-export interface ExternalLinkProps {
-  name: string
-  url: string
-  imagePath: string
+export interface ExternalLinkPropStylesType {
+  linkContainer?: ViewStyle
+  linkImage?: ImageStyle
+  linkText?: TextStyle
+}
+
+export interface ExternalLinkProps extends ExternalLinkType {
+  propStyles?: ExternalLinkPropStylesType
+  size?: 'small' | 'large'
 }
 
 export interface CategoryProps extends PropsWithChildren {
@@ -50,4 +56,8 @@ export interface ScreenButtonProps {
   screen: ScreenEnum
   isActive: boolean
   setActiveScreen: (screen: ScreenEnum) => void
+}
+
+export interface HomeProps {
+  externalLinks?: ExternalLinkProps[]
 }

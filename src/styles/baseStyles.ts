@@ -3,6 +3,9 @@ import { StyleSheet } from 'react-native'
 import { colors } from '@utils'
 
 export const baseStyles = StyleSheet.create({
+  styledText: {
+    color: colors.text.primary,
+  },
   progressBar: {
     backgroundColor: colors.progressBar.background,
     overflow: 'hidden',
