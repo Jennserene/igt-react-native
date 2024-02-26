@@ -4,5 +4,6 @@
 import AllProviders from './allProviders'
 
 export * from './loadingProvider'
+export * from './gameProvider'
 
 export default AllProviders

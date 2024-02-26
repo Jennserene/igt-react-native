@@ -17,6 +17,7 @@ export interface IgtChoiceFieldProps {
 
 export interface IgtDisplayFieldProps {
   field: DisplayField
+  value: unknown
 }
 
 export interface IgtNumberFieldProps {

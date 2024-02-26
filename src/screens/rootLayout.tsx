@@ -4,7 +4,9 @@ import { View } from 'react-native'
 import {
   CategoryEnum,
   ExternalLinksType,
+  PropsType,
   ScreenEnum,
+  ScreenOptions,
   ScreensType,
 } from '@typeDefs'
 
@@ -40,27 +42,36 @@ const externalLinks: ExternalLinksType = [
   },
 ]
 
-const RootLayout: React.FC = () => {
+const RootLayout = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [activeScreen, setActiveScreen] = React.useState(ScreenEnum.Home)
-  const game = Game.getDefaultGame()
+  const inProduction = Game.inProduction
+
+  const defaultOptions: ScreenOptions = {
+    category: CategoryEnum.Other,
+    devOnly: false,
+    isClassComponent: false,
+  }
 
   const screenList: ScreensType = {
     Home: {
       screen: Home,
       props: { externalLinks },
-      category: CategoryEnum.Other,
+      options: defaultOptions,
     },
     DeveloperPanel: {
       name: 'Developer Panel',
       screen: DeveloperPanelScreen,
-      props: { developerPanel: game.getDeveloperPanel() },
-      category: CategoryEnum.Game,
+      options: {
+        category: CategoryEnum.Game,
+        devOnly: true,
+        isClassComponent: true,
+      },
     },
     Settings: {
       screen: GameSettings,
-      category: CategoryEnum.Other,
+      options: defaultOptions,
     },
     // add other screens here and in the ScreenEnum in src/typeDefs/screenTypes
   }
@@ -81,8 +92,10 @@ const RootLayout: React.FC = () => {
   }
 
   const renderCategory = (category: string, index: number) => {
-    const menuItems = Object.keys(screenList).filter(() => {
-      return screenList[ScreenEnum.Home].category === category
+    const menuItems = Object.keys(screenList).filter((screen) => {
+      const options = screenList[screen as ScreenEnum].options
+      if (inProduction && options.devOnly) return false
+      return options.category === category
     }) as ScreenEnum[]
 
     return (
@@ -98,8 +111,18 @@ const RootLayout: React.FC = () => {
     )
   }
 
+  const renderClassScreen = (screen: unknown, props: PropsType) => {
+    const Screen = screen as React.Component
+
+    // @ts-ignore - this is a dynamic class component
+    return <Screen {...props} />
+  }
+
   const renderScreen = () => {
-    const { screen: Screen, props } = screenList[activeScreen]
+    const { screen, props, options } = screenList[activeScreen]
+    if (options.isClassComponent) return renderClassScreen(screen, props)
+
+    const Screen = screen as React.ComponentType
     return <Screen {...props} />
   }
 

@@ -38,6 +38,7 @@ export const buttonStyles = StyleSheet.create({
   styledButton: {
     borderRadius: 4,
     padding: 16,
+    margin: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },

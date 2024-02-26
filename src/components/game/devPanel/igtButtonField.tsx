@@ -1,9 +1,10 @@
 import React from 'react'
-import { Button, View } from 'react-native'
+import { View } from 'react-native'
 
 import { IgtButtonFieldProps } from '@typeDefs/game'
 
 import { devPanelStyles as styles } from '@styles/game'
+import { StyledButton } from '@components/base'
 
 export const IgtButtonField = (props: IgtButtonFieldProps) => {
   const { field } = props
@@ -13,7 +14,7 @@ export const IgtButtonField = (props: IgtButtonFieldProps) => {
 
   return (
     <View style={styles.stdContainer}>
-      <Button title={field.displayLabel} onPress={run} />
+      <StyledButton title={field.displayLabel} onPress={run} />
     </View>
   )
 }

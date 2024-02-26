@@ -7,13 +7,19 @@ import { colors } from '@utils'
 
 import { buttonStyles } from '@styles'
 
+import { StyledText } from './styledText'
+
 export const StyledButton = (props: StyledButtonProps) => {
-  const { style, activeColor, children, onPress, ...rest } = props
+  const { style, activeColor, title, children, onPress, ...rest } = props
   const defaultColor = colors.buttons.blue.standard
   const [color, setColor] = useState<string>(defaultColor)
 
   const bgInStyle = !!style && 'backgroundColor' in style
   const bgFromStyle: string = bgInStyle ? (style.backgroundColor as string) : ''
+
+  if (!title && !children) {
+    throw new Error('StyledButton must have a title or children')
+  }
 
   useEffect(() => {
     if (bgInStyle) setColor(bgFromStyle)
@@ -45,7 +51,7 @@ export const StyledButton = (props: StyledButtonProps) => {
       onPress={onPressHandler}
       {...rest}
     >
-      {children}
+      {title ? <StyledText>{title}</StyledText> : children}
     </Pressable>
   )
 }

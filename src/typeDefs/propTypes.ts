@@ -19,7 +19,8 @@ export interface StyledTextProps extends TextProps {
 export interface StyledButtonProps extends PressableProps {
   style?: StyleProp<ViewStyle>
   activeColor?: string
-  children: ReactNode
+  title?: string
+  children?: ReactNode
 }
 
 export interface ProgressBarProps {

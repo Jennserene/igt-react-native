@@ -1,12 +1,15 @@
 import React, { PropsWithChildren } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { GameProvider } from './gameProvider'
 import { LoadingProvider } from './loadingProvider'
 
-const AllProviders: React.FC<PropsWithChildren> = ({ children }) => {
+const AllProviders = ({ children }: PropsWithChildren) => {
   return (
     <SafeAreaProvider>
-      <LoadingProvider>{children}</LoadingProvider>
+      <GameProvider>
+        <LoadingProvider>{children}</LoadingProvider>
+      </GameProvider>
     </SafeAreaProvider>
   )
 }

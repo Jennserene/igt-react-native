@@ -11,13 +11,20 @@ export enum CategoryEnum {
   Other = 'Other',
 }
 
+export type ScreenOptions = {
+  category: CategoryEnum
+  devOnly: boolean
+  isClassComponent: boolean
+}
+
 export type ScreenType = {
   name?: string | ScreenEnum
-  screen: (props?: any) => React.JSX.Element
+  screen: unknown
   props?: Record<string, unknown>
-  category: CategoryEnum
-  devOnly?: boolean
+  options: ScreenOptions
 }
+
+export type PropsType = Record<string, unknown> | undefined
 
 export type ScreensType = Record<ScreenEnum, ScreenType>
 

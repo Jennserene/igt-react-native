@@ -14,6 +14,12 @@ export default class Game {
     this.game.start()
   }
 
+  public static get getGame(): MyGame {
+    if (this.game) return this.game
+    this.start()
+    return this.game
+  }
+
   public static getDefaultGame(): MyGame {
     return new MyGame({
       settings: new IgtSettings(),

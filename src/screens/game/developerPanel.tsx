@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import { DeveloperPanel, DeveloperPanelTab } from '@123ishatest/igt-library'
+import { useState } from 'react'
+import { DeveloperPanelTab } from '@123ishatest/igt-library'
 import { View } from 'react-native'
 
 import {
   IgtButtonFieldProps,
   IgtChoiceFieldProps,
-  IgtDeveloperPanelProps,
   IgtDisplayFieldProps,
   IgtNumberFieldProps,
   IgtRangeFieldProps,
@@ -22,55 +21,86 @@ import {
 import IgtTab from '@components/game/util/igtTab'
 import IgtTabs from '@components/game/util/igtTabs'
 
-const IgtDeveloperPanel = (props: IgtDeveloperPanelProps) => {
-  const { developerPanel } = props
-  const [selectedTab, setSelectedTab] = useState(developerPanel.tabs[0].label)
+import Game from '@game'
+
+const game = Game.getGame
+
+const IgtDeveloperPanel = () => {
+  const developerPanel = game.getDeveloperPanel()
+  const tabs = developerPanel.tabs
+  const [selectedTabLabel, setSelectedTabLabel] = useState(
+    developerPanel.tabs[0].label,
+  )
+  const [selectedTab, setSelectedTab] = useState<DeveloperPanelTab>(
+    developerPanel.tabs[0],
+  )
+
+  const updateSelectedTab = (label: string) => {
+    if (label === selectedTabLabel) return
+    setSelectedTabLabel(label)
+    const tab = tabs.find((t) => t.label === label)
+    if (!tab) return
+    setSelectedTab(tab)
+  }
+
   const components = {
-    IgtNumberField: (props: IgtNumberFieldProps) => (
+    'igt-number-field': (props: IgtNumberFieldProps) => (
       <IgtNumberField {...props} />
     ),
-    IgtButtonField: (props: IgtButtonFieldProps) => (
+    'igt-button-field': (props: IgtButtonFieldProps) => (
       <IgtButtonField {...props} />
     ),
-    IgtRangeField: (props: IgtRangeFieldProps) => <IgtRangeField {...props} />,
-    IgtDisplayField: (props: IgtDisplayFieldProps) => (
+    'igt-range-field': (props: IgtRangeFieldProps) => (
+      <IgtRangeField {...props} />
+    ),
+    'igt-display-field': (props: IgtDisplayFieldProps) => (
       <IgtDisplayField {...props} />
     ),
-    IgtChoiceField: (props: IgtChoiceFieldProps) => (
+    'igt-choice-field': (props: IgtChoiceFieldProps) => (
       <IgtChoiceField {...props} />
     ),
   }
 
-  const renderTabScreen = (tab: DeveloperPanelTab) => {
-    return tab.children.map((field, index) => {
+  const renderTabScreen = () => {
+    return selectedTab.children.map((field, index) => {
       const componentName = field.componentName as string
-      const Component = components[componentName as keyof typeof components]
+      const SelectedComponent =
+        components[componentName as keyof typeof components]
+      if (!SelectedComponent)
+        throw new Error('${componentName} is not defined.')
+
+      const key = `property-${field.propertyName}-${index}`
+      const props: Record<string, unknown> = { field }
+      !!field.object && (props.value = field.value)
 
       return (
-        <View key={`property-${field.propertyName}-${index}`}>
+        <View key={key}>
           {/* @ts-ignore - this is a dynamic component */}
-          <Component field={field} />
+          <SelectedComponent {...props} />
         </View>
       )
     })
   }
 
-  const renderIgtTab = (developerPanel: DeveloperPanel) => {
-    return developerPanel.tabs.map((tab, index) => (
+  const renderIgtTabs = () => {
+    return developerPanel.tabs.map((tab: DeveloperPanelTab, index: number) => (
       <IgtTab
         name={tab.label}
-        selected={selectedTab === tab.label}
+        selected={selectedTabLabel === tab.label}
         key={`tab-${tab.label}-${index}`}
       >
-        {renderTabScreen(tab)}
+        {renderTabScreen()}
       </IgtTab>
     ))
   }
 
   return (
     <View style={styles.panelContainer}>
-      <IgtTabs selectedTab={selectedTab} setSelectedTab={setSelectedTab}>
-        {renderIgtTab(developerPanel)}
+      <IgtTabs
+        selectedTab={selectedTabLabel}
+        setSelectedTab={updateSelectedTab}
+      >
+        {renderIgtTabs()}
       </IgtTabs>
     </View>
   )
