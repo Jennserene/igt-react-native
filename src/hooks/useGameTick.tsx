@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 
-import Game from '@game'
+import { TickCallback, UseOnGameTickOptions } from '@typeDefs'
 
-type TickCallback = () => void
+import Game from '@game'
 
 // @TODO Update DEFAULT_RATE to an appropriate value.
 const DEFAULT_RATE = 10
@@ -21,13 +21,24 @@ const game = Game.getGame
 export const useGameTick = (timesPerSecond: number = DEFAULT_RATE) => {
   const divisor = Math.ceil(1 / (game.tickDuration * timesPerSecond))
 
+  /**
+   * useOnGameTick is the hook that will run the callback on the game tick a set number
+   * of times per second, set when calling useGameTick.
+   * You can also pass in an options object with a numEventsToCheckAfter property to
+   * adjust how many events to let pass before calling the callback again if the tick event stops.
+   * If you need to adjust this hook, you can add more options to the options object.
+   *
+   * @param callback
+   * @param options
+   */
   const useOnGameTick = (
     callback: TickCallback,
-    numEventsToCheckAfter: number = CHECK_MULTIPLIER,
+    options?: UseOnGameTickOptions,
   ) => {
+    const checkAfterEvents = options?.numEventsToCheckAfter ?? CHECK_MULTIPLIER
     const callbackRef = useRef(callback)
     callbackRef.current = callback
-    const checkAfter = game.tickDuration * numEventsToCheckAfter * 1000
+    const checkAfter = game.tickDuration * checkAfterEvents * 1000
 
     useEffect(() => {
       let tickCount: number = 0
