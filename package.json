@@ -20,7 +20,7 @@
     "@123ishatest/igt-library": "^0.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@expo/metro-runtime": "~3.1.3",
-    "expo": "^50.0.7",
+    "expo": "^50.0.8",
     "expo-app-loading": "^2.1.1",
     "expo-font": "^11.10.3",
     "expo-splash-screen": "~0.26.4",
