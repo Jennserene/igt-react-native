@@ -8,11 +8,11 @@ import Animated, {
 } from 'react-native-reanimated'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
 
-import { SidebarProps } from '@typeDefs'
+import { DrawerProps } from '@typeDefs'
 
 import { navStyles as styles } from '@styles'
 
-const Drawer = (props: SidebarProps) => {
+const Drawer = (props: DrawerProps) => {
   const { isOpen, children } = props
   const frame = useSafeAreaFrame()
   const offset = useSharedValue(0)

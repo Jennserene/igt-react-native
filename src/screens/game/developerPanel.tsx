@@ -8,24 +8,24 @@ import {
   IgtDisplayFieldProps,
   IgtNumberFieldProps,
   IgtRangeFieldProps,
-} from '@typeDefs/game'
+} from '@typeDefs/gameDefs'
 
-import { devPanelStyles as styles } from '@styles/game'
+import { devPanelStyles as styles } from '@styles/gameStyles'
 import {
   IgtButtonField,
   IgtChoiceField,
   IgtDisplayField,
   IgtNumberField,
   IgtRangeField,
-} from '@components/game/devPanel'
-import IgtTab from '@components/game/util/igtTab'
-import IgtTabs from '@components/game/util/igtTabs'
+} from '@components/gameComponents/devPanel'
+import IgtTab from '@components/gameComponents/util/igtTab'
+import IgtTabs from '@components/gameComponents/util/igtTabs'
 
 import Game from '@game'
 
 const game = Game.getGame
 
-const IgtDeveloperPanel = () => {
+export const DeveloperPanel = () => {
   const developerPanel = game.getDeveloperPanel()
   const tabs = developerPanel.tabs
   const [selectedTabLabel, setSelectedTabLabel] = useState(
@@ -64,8 +64,9 @@ const IgtDeveloperPanel = () => {
   const renderTabScreen = () => {
     return selectedTab.children.map((field, index) => {
       const componentName = field.componentName as string
-      const SelectedComponent =
-        components[componentName as keyof typeof components]
+      const SelectedComponent = components[
+        componentName as keyof typeof components
+      ] as React.FC<any>
       if (!SelectedComponent)
         throw new Error('${componentName} is not defined.')
 
@@ -75,7 +76,6 @@ const IgtDeveloperPanel = () => {
 
       return (
         <View key={key}>
-          {/* @ts-ignore - this is a dynamic component */}
           <SelectedComponent {...props} />
         </View>
       )
@@ -106,4 +106,4 @@ const IgtDeveloperPanel = () => {
   )
 }
 
-export default IgtDeveloperPanel
+export default DeveloperPanel

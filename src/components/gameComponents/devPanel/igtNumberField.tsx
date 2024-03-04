@@ -1,9 +1,9 @@
 import React from 'react'
 import { TextInput, View } from 'react-native'
 
-import { IgtNumberFieldProps } from '@typeDefs/game'
+import { IgtNumberFieldProps } from '@typeDefs/gameDefs'
 
-import { devPanelStyles as styles } from '@styles/game'
+import { devPanelStyles as styles } from '@styles/gameStyles'
 import { StyledText } from '@components/base'
 
 export const IgtNumberField = (props: IgtNumberFieldProps) => {

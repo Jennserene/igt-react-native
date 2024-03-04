@@ -1,4 +1,4 @@
-import { notificationEnums } from './game/notificationTypes'
+import { notificationEnums } from './gameDefs/notificationTypes'
 
 export type SvgType<K extends string | number | symbol> = Record<
   K,

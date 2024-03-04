@@ -14,3 +14,5 @@ export interface TabType {
   name: string
   isActive: boolean
 }
+
+export interface RecruitmentProps {}

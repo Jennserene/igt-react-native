@@ -5,7 +5,7 @@ import {
   getNotificationEnum,
   notificationEnums,
   NotificationProps,
-} from '@typeDefs/game'
+} from '@typeDefs/gameDefs'
 
 import { notificationIcons } from '@assets/game'
 
@@ -13,7 +13,7 @@ import {
   notificationBackground,
   notificationText,
   notificationStyles as styles,
-} from '@styles/game'
+} from '@styles/gameStyles'
 
 const Notification: React.FC<NotificationProps> = ({ notification }) => {
   const { type: typeString, title, text } = notification

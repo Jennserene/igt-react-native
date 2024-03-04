@@ -1,9 +1,9 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { NotificationsProps } from '@typeDefs/game'
+import { NotificationsProps } from '@typeDefs/gameDefs'
 
-import { notificationStyles as styles } from '@styles/game'
+import { notificationStyles as styles } from '@styles/gameStyles'
 
 import IgtNotification from './igtNotification'
 

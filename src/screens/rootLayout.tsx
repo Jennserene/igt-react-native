@@ -1,16 +1,10 @@
-import React from 'react'
-import { View } from 'react-native'
+import React, { useState } from 'react'
+import { View, ViewStyle } from 'react-native'
 
-import {
-  CategoryEnum,
-  ExternalLinksType,
-  PropsType,
-  ScreenEnum,
-  ScreenOptions,
-  ScreensType,
-} from '@typeDefs'
+import { CategoryEnum, ScreenEnum } from '@typeDefs'
 
 import { globalStyles as styles } from '@styles'
+import { Header } from '@components'
 import {
   Category,
   ExternalLink,
@@ -20,65 +14,22 @@ import {
 
 import Game from '@game'
 
-import { GameSettings } from './game'
-import DeveloperPanelScreen from './game/developerPanel'
-import Home from './home'
-
-const externalLinks: ExternalLinksType = [
-  {
-    name: 'Discord',
-    url: 'https://discord.gg/WUYDqct2Ef',
-    image: require('@assets/socials/discord.png'),
-  },
-  {
-    name: 'Documentation',
-    url: 'https://123ishatest.github.io/igt-docs',
-    image: require('@assets/socials/docusaurus.svg'),
-  },
-  {
-    name: 'Github',
-    url: 'https://github.com/123ishaTest/igt-library',
-    image: require('@assets/socials/github.png'),
-  },
-]
+import { externalLinks, screenList } from './screens'
 
 const RootLayout = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [menuOpen, setMenuOpen] = React.useState(false)
-  const [activeScreen, setActiveScreen] = React.useState(ScreenEnum.Home)
+  const [menuOpen, _setMenuOpen] = useState<boolean>(false)
+  const [activeScreen, setActiveScreen] = useState<ScreenEnum>(ScreenEnum.Home)
+  const [rootLeftMargin, setRootLeftMargin] = useState<ViewStyle>({})
   const inProduction = Game.inProduction
 
-  const defaultOptions: ScreenOptions = {
-    category: CategoryEnum.Other,
-    devOnly: false,
-    isClassComponent: false,
-  }
-
-  const screenList: ScreensType = {
-    Home: {
-      screen: Home,
-      props: { externalLinks },
-      options: defaultOptions,
-    },
-    DeveloperPanel: {
-      name: 'Developer Panel',
-      screen: DeveloperPanelScreen,
-      options: {
-        category: CategoryEnum.Game,
-        devOnly: true,
-        isClassComponent: true,
-      },
-    },
-    Settings: {
-      screen: GameSettings,
-      options: defaultOptions,
-    },
-    // add other screens here and in the ScreenEnum in src/typeDefs/screenTypes
+  const screenTitle = (screen: ScreenEnum): string => {
+    return screenList[screen].name ?? screen
   }
 
   const renderButtons = (menuItems: ScreenEnum[]) => {
     return menuItems.map((screen, index) => {
-      const title: string = screenList[screen].name ?? screen
+      const title = screenTitle(screen)
       return (
         <ScreenButton
           key={`button-${title}-${index}`}
@@ -95,6 +46,7 @@ const RootLayout = () => {
     const menuItems = Object.keys(screenList).filter((screen) => {
       const options = screenList[screen as ScreenEnum].options
       if (inProduction && options.devOnly) return false
+
       return options.category === category
     }) as ScreenEnum[]
 
@@ -111,17 +63,8 @@ const RootLayout = () => {
     )
   }
 
-  const renderClassScreen = (screen: unknown, props: PropsType) => {
-    const Screen = screen as React.Component
-
-    // @ts-ignore - this is a dynamic class component
-    return <Screen {...props} />
-  }
-
   const renderScreen = () => {
-    const { screen, props, options } = screenList[activeScreen]
-    if (options.isClassComponent) return renderClassScreen(screen, props)
-
+    const { screen, props } = screenList[activeScreen]
     const Screen = screen as React.ComponentType
     return <Screen {...props} />
   }
@@ -132,11 +75,14 @@ const RootLayout = () => {
 
   return (
     <View style={styles.stdContainerRow}>
-      <SideBar isOpen={menuOpen}>
+      <SideBar isOpen={menuOpen} setRootLeftMargin={setRootLeftMargin}>
         {renderMenuItems()}
         <Category title="Links">{renderExternalLinks}</Category>
       </SideBar>
-      <View style={styles.rootContainer}>{renderScreen()}</View>
+      <View style={[styles.rootContainer, rootLeftMargin]}>
+        <Header title={screenTitle(activeScreen)} />
+        <View style={styles.screenContainer}>{renderScreen()}</View>
+      </View>
     </View>
   )
 }

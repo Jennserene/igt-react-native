@@ -1,9 +1,13 @@
-import { IgtSettings } from '@123ishatest/igt-library'
+import { IgtSettings, IgtWallet } from '@123ishatest/igt-library'
 
+import { CurrencyTypes } from '@typeDefs/gameDefs/walletTypes'
+
+import { DuckRescue } from './features'
 import { MyGame } from './MyGame'
 
 export default class Game {
-  static inProduction: boolean = process.env.NODE_ENV === 'production'
+  // static inProduction: boolean = process.env.NODE_ENV === 'production'
+  static inProduction: boolean = false // @TODO Set to env variable like above.
 
   static game: MyGame
 
@@ -23,6 +27,8 @@ export default class Game {
   public static getDefaultGame(): MyGame {
     return new MyGame({
       settings: new IgtSettings(),
+      wallet: new IgtWallet([CurrencyTypes.rubberDuck]),
+      rubberDuckProducer: new DuckRescue(),
       // Add your own features here.
     })
   }

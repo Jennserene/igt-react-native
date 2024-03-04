@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Platform, View, ViewStyle } from 'react-native'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
 
@@ -10,7 +10,7 @@ import Drawer from './drawer'
 import SideMenu from './sideMenu'
 
 export const SideBar = (props: SidebarProps) => {
-  const { isOpen, children } = props
+  const { isOpen, setRootLeftMargin, children } = props
   const { height: safeHeight, width: safeWidth } = useSafeAreaFrame()
   const webWidth = styles.sidebarContainer.maxWidth
   const mobileWidth = (80 / 100) * safeWidth
@@ -20,6 +20,12 @@ export const SideBar = (props: SidebarProps) => {
     height: safeHeight,
     width: isOnWeb ? webWidth : mobileWidth,
   } as ViewStyle
+  useEffect(() => {
+    const rootLeftMargin = {
+      marginLeft: isOnWeb ? webWidth : 0,
+    } as ViewStyle
+    setRootLeftMargin(rootLeftMargin)
+  }, [setRootLeftMargin])
 
   const sideMenu = <SideMenu>{children}</SideMenu>
 

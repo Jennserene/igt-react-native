@@ -48,6 +48,11 @@ export interface ErrorProps {
 
 export interface SidebarProps extends PropsWithChildren {
   isOpen: boolean
+  setRootLeftMargin: (margin: ViewStyle) => void
+}
+
+export interface DrawerProps extends PropsWithChildren {
+  isOpen: boolean
 }
 
 export interface ExternalLinkPropStylesType {
@@ -74,4 +79,10 @@ export interface ScreenButtonProps {
 
 export interface HomeProps {
   externalLinks?: ExternalLinkProps[]
+}
+
+export interface StdSVGProps {
+  width?: number
+  height?: number
+  color?: string
 }

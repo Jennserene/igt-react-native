@@ -2,9 +2,9 @@ import React from 'react'
 import Slider from '@react-native-community/slider'
 import { View } from 'react-native'
 
-import { IgtRangeFieldProps } from '@typeDefs/game'
+import { IgtRangeFieldProps } from '@typeDefs/gameDefs'
 
-import { devPanelStyles as styles } from '@styles/game'
+import { devPanelStyles as styles } from '@styles/gameStyles'
 import { StyledText } from '@components/base'
 
 export const IgtRangeField = (props: IgtRangeFieldProps) => {

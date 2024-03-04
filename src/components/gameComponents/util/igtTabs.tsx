@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
-import { IgtTabsProps, TabType } from '@typeDefs/game'
+import { IgtTabsProps, TabType } from '@typeDefs/gameDefs'
 
-import { tabsStyles as styles } from '@styles/game'
+import { tabsStyles as styles } from '@styles/gameStyles'
 
 const IgtTabs = (props: IgtTabsProps) => {
   const { selectedTab, setSelectedTab, children } = props

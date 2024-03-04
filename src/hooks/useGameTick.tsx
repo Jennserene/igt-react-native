@@ -4,7 +4,7 @@ import { TickCallback, UseOnGameTickOptions } from '@typeDefs'
 
 import Game from '@game'
 
-// @TODO Update DEFAULT_RATE to an appropriate value.
+// @TODO Update DEFAULT_RATE and CHECK_MULTIPLIER to an appropriate value.
 const DEFAULT_RATE = 10
 const CHECK_MULTIPLIER = 3
 

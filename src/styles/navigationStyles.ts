@@ -26,7 +26,7 @@ export const navStyles = StyleSheet.create({
     marginBottom: 8,
   },
   sideMenuContainer: {
-    ...globalParentStyles.stdContainer,
+    ...globalParentStyles.stdFillContainer,
     justifyContent: 'space-between',
     backgroundColor: colors.backgrounds.sideBar,
     paddingHorizontal: 16,

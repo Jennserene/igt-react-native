@@ -3,7 +3,6 @@
 
 import Game from './Game'
 
-export * from './MyFeatures'
 export * from './MyGame'
 
 export default Game

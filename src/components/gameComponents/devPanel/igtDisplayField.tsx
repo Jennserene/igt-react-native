@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
 
-import { IgtDisplayFieldProps } from '@typeDefs/game'
+import { IgtDisplayFieldProps } from '@typeDefs/gameDefs'
 
 import { useGameTick } from '@hooks'
 
-import { devPanelStyles as styles } from '@styles/game'
+import { devPanelStyles as styles } from '@styles/gameStyles'
 import { StyledText } from '@components/base'
 
 export const IgtDisplayField = (props: IgtDisplayFieldProps) => {

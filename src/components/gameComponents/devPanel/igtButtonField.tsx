@@ -1,9 +1,9 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { IgtButtonFieldProps } from '@typeDefs/game'
+import { IgtButtonFieldProps } from '@typeDefs/gameDefs'
 
-import { devPanelStyles as styles } from '@styles/game'
+import { devPanelStyles as styles } from '@styles/gameStyles'
 import { StyledButton } from '@components/base'
 
 export const IgtButtonField = (props: IgtButtonFieldProps) => {

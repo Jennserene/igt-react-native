@@ -2,6 +2,7 @@ import { ImageSourcePropType } from 'react-native'
 
 export enum ScreenEnum {
   Home = 'Home',
+  Rescue = 'Rescue',
   DeveloperPanel = 'DeveloperPanel',
   Settings = 'Settings',
 }
@@ -14,7 +15,6 @@ export enum CategoryEnum {
 export type ScreenOptions = {
   category: CategoryEnum
   devOnly: boolean
-  isClassComponent: boolean
 }
 
 export type ScreenType = {
@@ -23,8 +23,6 @@ export type ScreenType = {
   props?: Record<string, unknown>
   options: ScreenOptions
 }
-
-export type PropsType = Record<string, unknown> | undefined
 
 export type ScreensType = Record<ScreenEnum, ScreenType>
 

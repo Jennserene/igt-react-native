@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Picker } from '@react-native-picker/picker'
 import { View } from 'react-native'
 
-import { IgtChoiceFieldProps } from '@typeDefs/game'
+import { IgtChoiceFieldProps } from '@typeDefs/gameDefs'
 
-import { devPanelStyles as styles } from '@styles/game'
+import { devPanelStyles as styles } from '@styles/gameStyles'
 import { StyledText } from '@components/base'
 
 export const IgtChoiceField = (props: IgtChoiceFieldProps) => {

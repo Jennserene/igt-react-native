@@ -41,7 +41,7 @@ export default function App() {
   return (
     <GlobalWrapper>
       <View
-        style={styles.stdContainer}
+        style={styles.stdFillContainer}
         testID="appContainer"
         onLayout={onLayoutRootView}
       >

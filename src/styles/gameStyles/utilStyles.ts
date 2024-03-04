@@ -1,6 +1,6 @@
 import { StyleSheet, ViewStyle } from 'react-native'
 
-import { notificationEnums } from '@typeDefs/game'
+import { notificationEnums } from '@typeDefs/gameDefs'
 
 import { colors as allColors } from '@utils'
 

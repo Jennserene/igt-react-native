@@ -1,6 +1,6 @@
 import { IgtGame } from '@123ishatest/igt-library'
 
-import { MyFeatures } from './MyFeatures'
+import { MyFeatures } from '@typeDefs/gameDefs/MyFeatures'
 
 export class MyGame extends IgtGame {
   // @TODO Update SAVE_KEY to something unique

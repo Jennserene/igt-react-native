@@ -1,28 +1,33 @@
 import React from 'react'
-import { Alert } from 'react-native'
 
-import { colors } from '@utils'
+import { alert, colors } from '@utils'
 
 import { buttonStyles } from '@styles'
 import { StyledButton, StyledText } from '@components/base'
 
-import App from '@game'
+import Game from '@game'
+
+const game = Game.getGame
 
 export const GameSettings = () => {
   const confirmAlert = () =>
-    Alert.alert('Reset Save', 'Are you sure you want to reset your save?', [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'Reset',
-        onPress: () => handleResetSave(),
-      },
-    ])
+    alert(
+      'Reset Save',
+      'Are you sure you want to reset your save? Requires reload.',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Reset',
+          onPress: () => handleResetSave(),
+        },
+      ],
+    )
 
   const handleResetSave = () => {
-    App.game.deleteSave()
+    game.deleteSave()
   }
 
   return (
